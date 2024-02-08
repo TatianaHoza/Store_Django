@@ -16,7 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from .views import filter_customer_orders, filter_ordered_products
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('client-orders/<int:client_id>', filter_customer_orders, name='customer_orders'),
+    path('ordered-products-by-period/<int:client_id>', filter_ordered_products,
+         name='ordered_products_by_period'),
 ]

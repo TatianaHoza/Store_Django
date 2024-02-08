@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Filter orders</title>
+    <h1>Orders {{ client.name }}.</h1>
+    <h2> last 7 days</h2>
+    {% for product in products %}
+    <li>{{ product.name }}</li>
+    <h2> last month</h2>
+    {% for product in products %}
+    <li>{{ product.name }}</li>
+    <h2> last year</h2>
+    {% for product in products %}
+    <li>{{ product.name }}</li>
+</head>
+<body>
+
+</body>
+</html>
