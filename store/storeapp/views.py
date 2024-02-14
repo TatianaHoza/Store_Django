@@ -1,10 +1,12 @@
+from datetime import timedelta
+
 from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
 from store.storeapp.models import ClientModel, OrderModel
 
 def filter_client_orders(request, client_id):
     client = get_object_or_404(ClientModel, pk=client_id)
-    orders = Order.objects.filter(client=client)
+    orders = OrderModel.objects.filter(client=client)
     context = {
         'client': client,
         'orders': orders,
@@ -18,9 +20,9 @@ def filter_ordered_products(request, client_id):
     month_ago = today - timedelta(days=30)
     year_ago = today - timedelta(days=365)
 
-    orders_week = Order.objects.filter(client=client, order_date__gte=week_ago)
-    orders_month = Order.objects.filter(client=clientr, order_date__gte=month_ago)
-    orders_year = Order.objects.filter(client=client, order_date__gte=year_ago)
+    orders_week = OrderModel.objects.filter(client=client, order_date__gte=week_ago)
+    orders_month = OrderModel.objects.filter(client=client, order_date__gte=month_ago)
+    orders_year = OrderModel.objects.filter(client=client, order_date__gte=year_ago)
 
     products_week = set()
     products_month = set()
