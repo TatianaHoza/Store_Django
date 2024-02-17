@@ -9,7 +9,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **kwargs):
         for i in range(0, 10):
-            products = ProductModel(name=f'product{i}', description=lorem_ipsum.paragraph(1),
+            products = ProductModel(name=f'product{i}', description=lorem_ipsum.paragraphs(1),
                                     price=random.randint(100, 1000), quanty=random.randint(1, 20),
                                     date_added=timezone.now().date())
             products.save()

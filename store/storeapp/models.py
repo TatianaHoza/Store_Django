@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import ImageField
 
 '''Поля модели «Клиент»:
 — имя клиента
@@ -19,7 +20,7 @@ from django.db import models
 — связь с моделью «Товар», указывает на товары, входящие в заказ
 — общая сумма заказа
 — дата оформления заказа'''
-
+from .views import upload_image
 
 class ClientModel(models.Model):
     name = models.CharField(max_length=100)
@@ -38,6 +39,7 @@ class ProductModel(models.Model):
     price = models.DecimalField(max_digits=8, decimal_places=2)
     quanty = models.IntegerField()
     date_added = models.DateTimeField(auto_now_add=True)
+    image = models.ImageField(upload_to=upload_image)
 
 
 class OrderModel(models.Model):

@@ -9,11 +9,14 @@ from random import choice
 class Command(BaseCommand):
 
     def handle(self, *args, **kwargs):
-        for i in range(0, 10):
-            client = ClientModel.objects.all()
-            products = ProductModel.objects.all()
-            order = OrderModel(client=choice(client), products=choice(products),
-                               total_price=sum(product.price for product in products),
-                               data_ordered=timezone.now().date())
-            order.save()
+        order = OrderModel(
+            client=choice(ClientModel.objects.all()),
+            total_price=0,
+        )
+        order.save()
+        for _ in range(10):
+            product = choice(ProductModel.objects.all())
+            order.products.add(product)
+            order.total_price += product.price
+
         print('Add new order')
