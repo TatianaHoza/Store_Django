@@ -15,13 +15,13 @@ class ClientAdmin(admin.ModelAdmin):
     search_help_text = 'Поиск по полю Phone'
 
 
-class OrderAdmin(admin.ModelAdmin):
-    list_display = ['client', 'products', 'date_ordered']
-    ordering = ['-client']
-    list_filter = ['date_ordered', 'total_price']
-    search_fields = ['client']
-    search_help_text = 'Поиск по полю Client'
-    actions = [reset_quantity]
-
-admin.site.register(ClientModel, ClientAdmin)
-admin.site.register(OrderModel,OrderAdmin)
+# class OrderAdmin(admin.ModelAdmin):
+#     list_display = ['client', 'products', 'date_ordered']
+#     ordering = ['-client']
+#     list_filter = ['date_ordered', 'total_price']
+#     search_fields = ['client']
+#     search_help_text = 'Поиск по полю Client'
+#     actions = [reset_quantity]
+#
+# admin.site.register(ClientModel, ClientAdmin)
+# admin.site.register(OrderModel,OrderAdmin)

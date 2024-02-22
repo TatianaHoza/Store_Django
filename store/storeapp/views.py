@@ -4,19 +4,19 @@ from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
 
 
-from store.storeapp.forms import ProductImage
+#from .forms import ProductImage
 
 
-from store.storeapp.models import OrderModel,ClientModel
+from .models import OrderModel,ClientModel
 
-def upload_image(request):
-    if request.method == 'POST':
-        form = ProductImage(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-        else:
-            form = ProductImage()
-    return render(request, 'upload_image.html', {'form': form})
+# def upload_image(request):
+#     if request.method == 'POST':
+#         form = ProductImage(request.POST, request.FILES)
+#         if form.is_valid():
+#             form.save()
+#         else:
+#             form = ProductImage()
+#     return render(request, 'upload_image.html', {'form': form})
 
 def filter_client_orders(request, client_id):
     client = get_object_or_404(ClientModel, pk=client_id)
